@@ -1,15 +1,15 @@
 from fastapi import FastAPI
 from app.database import engine, Base
-from app.models import user  #  중요
-from app.api import logins, signs_up 
+from app.models import user
+from app.api import logins, sign_up # 👈 깔끔하게 폴더에서 불러오기 [cite: 2026-03-01]
 
-# 이 코드가 실행되는 순간 orbit.db 파일에 'users' 테이블이 생성될거래
+# 서버 켤 때 DB 테이블 자동 생성 [cite: 2026-03-01]
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Orbit SNS System")
 
-# 이렇게 연결하면 브라우저에서 /signup, /login 주소로 접근할 수 있음
-app.include_router(signs_up.router, prefix="/signup", tags=["Registration"])
+# 👈 sign_up.router 로 이름을 맞춰줍니다 [cite: 2026-02-25]
+app.include_router(sign_up.router, prefix="/signup", tags=["Registration"])
 app.include_router(logins.router, prefix="/login", tags=["Authentication"])
 
 @app.get("/")
