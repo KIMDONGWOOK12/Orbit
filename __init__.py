@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <body>
     <h2>Orbit SNS 회원가입</h2>
     <form id="signupForm">
@@ -15,7 +14,7 @@
             e.preventDefault();
             const response = await fetch('/signup/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
@@ -23,9 +22,8 @@
                 })
             });
             const result = await response.json();
-            alert(result.message || "ㅅㅂ에러");
+            alert(result.message || "에러 발생!");
         };
     </script>
 </body>
-
 </html>
