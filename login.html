@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Orbit - 로그인</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            font-family: 'Pretendard', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #loginForm {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px;
+            border-radius: 25px;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            font-size: 1.2rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #88282d;
+        }
+
+        button {
+            padding: 20px;
+            border-radius: 12px;
+            border: none;
+            background-color: #88282d;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #a33137;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <form id="loginForm">
+        <h2>ORBIT 로그인</h2>
+        <input type="email" id="email" placeholder="이메일 주소" required>
+        <input type="password" id="password" placeholder="비밀번호" required>
+        <button type="submit">입장하기</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+
+            // 데이터를 JSON 형식으로 포장합니다.
+            const loginData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/login/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }, // JSON 전송 명시
+                    body: JSON.stringify(loginData) // 데이터를 문자열로 변환
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("로그인 성공! 환영합니다.");
+                    window.location.href = "/";
+                } else {
+                    // 서버에서 온 에러 메시지를 구체적으로 보여줍니다.
+                    console.error("에러 발생:", result);
+                    alert("실패: " + (result.detail[0]?.msg || result.detail || "정보를 확인하세요."));
+                }
+            } catch (err) {
+                console.error("통신 실패:", err);
+                alert("서버와 연결할 수 없습니다.");
+            }
+        };
+    </script>
+</body>
+
+</html>

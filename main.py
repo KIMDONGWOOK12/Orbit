@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import FileResponse  # 👈 [추가] 파일을 보내주기 위한 도구입니다
 from app.database import engine, Base
 from app.models import user
@@ -23,3 +23,8 @@ async def read_home():
 async def read_signup_page():
     # http://127.0.0.1:8000/register 접속 시 기존 가입창(index.html)을 보여줌
     return FileResponse('index.html')
+
+
+@app.get("/login-page") #로그인창 보여주기
+async def read_login_page():
+    return FileResponse('login.html')

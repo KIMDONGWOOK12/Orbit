@@ -2,53 +2,73 @@
 <html>
 
 <head>
-    <title>Orbit SNS - 대문</title>
+    <title>Orbit SNS - Welcome</title>
     <style>
         body {
-            background: #1a1a2e;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
             text-align: center;
-            font-family: sans-serif;
-            padding-top: 100px;
+            font-family: 'Pretendard', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0;
         }
 
         h1 {
+            font-size: 5rem;
             color: #e94560;
-            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin-bottom: 50px;
+            opacity: 0.8;
         }
 
         .nav-buttons {
-            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
         }
 
         .btn {
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 5px;
+            padding: 20px 50px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
+            font-size: 1.3rem;
+            transition: all 0.3s;
         }
 
         .signup-btn {
-            background: #e94560;
+            background-color: #e94560;
             color: white;
+            border: none;
         }
 
         .login-btn {
-            background: #16213e;
-            color: white;
-            border: 1px solid #e94560;
+            background-color: transparent;
+            color: #e94560;
+            border: 3px solid #e94560;
+        }
+
+        .btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
         }
     </style>
 </head>
 
 <body>
     <h1>ORBIT</h1>
-    <p>박민혁은 왜 박민혁일까?</p>
+    <p>당신의 우주를 연결하세요 🚀</p>
     <div class="nav-buttons">
-        <a href="/register" class="btn signup-btn">지금 가입하기</a>
-        <a href="/docs" class="btn login-btn">API 문서(Swagger)</a>
+        <a href="/register" class="btn signup-btn">시작하기</a>
+        <a href="/login-page" class="btn login-btn">로그인</a>
     </div>
 </body>
 
