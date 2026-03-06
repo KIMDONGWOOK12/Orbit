@@ -15,6 +15,11 @@ app.include_router(logins.router, prefix="/login", tags=["Authentication"])
 
 
 @app.get("/")
-async def read_index():
-    # 사용자가 접속하면 같은 폴더에 있는 index.html을 보여줍니다. [cite: 2026-03-01]
+async def read_home():
+    # 이제 http://127.0.0.1:8000 접속 시 '진짜 대문'인 home.html을 보여ㅑ줌
+    return FileResponse('home.html')
+
+@app.get("/register")
+async def read_signup_page():
+    # http://127.0.0.1:8000/register 접속 시 기존 가입창(index.html)을 보여줌
     return FileResponse('index.html')
