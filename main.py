@@ -17,7 +17,7 @@ app.include_router(logins.router, prefix="/login", tags=["Authentication"])
 @app.get("/")
 async def read_home():
     # 이제 http://127.0.0.1:8000 접속 시 '진짜 대문'인 home.html을 보여ㅑ줌
-    return FileResponse('home.html')
+    return FileResponse('login.html')    #return FileResponse('home.html')
 
 @app.get("/register")
 async def read_signup_page():

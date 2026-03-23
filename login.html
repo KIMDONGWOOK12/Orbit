@@ -55,11 +55,52 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            margin-bottom: -20px;  /*로그인 버튼 아래 여백*/
         }
 
         button:hover {
             background-color: #a33137;
             transform: translateY(-3px);
+        }
+
+        /* --- [추가된 CSS] --- */
+        /* 1. 구분선 스타일 */
+        .divider {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .divider span {
+            padding: 0 10px;
+        }
+
+        /* 2. 투명 회원가입 버튼 스타일 */
+        .signup-link {
+            text-align: center;
+            text-decoration: none;
+            color: #555; /* 너무 튀지 않는 회색조 */
+            font-size: 1.05rem;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            padding: 10px;
+            transition: 0.2s;
+            margin-top: -30px; /*회원가입 버튼 위 여잭*/
+        }
+
+        .signup-link:hover {
+            color: #88282d; /* 마우스 올리면 브랜드 컬러로 변경 */
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -69,7 +110,13 @@
         <h2>ORBIT 로그인</h2>
         <input type="email" id="email" placeholder="이메일 주소" required>
         <input type="password" id="password" placeholder="비밀번호" required>
-        <button type="submit">입장하기</button>
+        <button type="submit">로그인</button>
+
+        <div class="divider">
+            <span>계정이 없으신가요?</span>
+        </div>
+        <a href="/register" class="signup-link">회원가입</a>
+
     </form>
 
     <script>
